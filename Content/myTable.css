@@ -1,0 +1,44 @@
+﻿.myTable .table-header {
+    background: rgb(144,12,63);
+    background: linear-gradient(90deg, rgba(144,12,63,1) 11%, rgba(199,0,57,1) 100%);
+    color: white;
+}
+
+.myTable {
+    border: 2px rgba(144,12,63,1) solid;
+}
+
+.btn-create {
+    border-radius: 10px;
+    background: rgb(144,12,63);
+    background: linear-gradient( 90deg, rgba(144,12,63,1) 11%, rgba(199,0,57,1) 100%);
+    color: white;
+    font-weight: bold;
+    padding: 7px 15px;
+    font-size: 16px;
+}
+    .btn-create:hover, .btn-edit:hover, .btn-delete:hover {
+        color: white;
+        text-decoration: none;
+    }
+
+.btn-edit {
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    padding: 6px 4px;
+    width: 95%;
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+}
+.btn-delete {
+    background-color: darkred;
+    color: white;
+    font-weight: bold;
+    padding: 6px 4px;
+    width: 95%;
+    display: block;
+    border-radius: 6px;
+}

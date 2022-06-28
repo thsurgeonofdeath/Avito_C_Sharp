@@ -1,0 +1,39 @@
+﻿@model ASP_Projet.Models.Message
+
+@{
+    ViewBag.Title = "Contact";
+}
+<div class="createFrom" style="width: 30%">
+    <h2 style="margin-top: 0;color: rgba(144,12,63,1);font-weight: bold;">Contactez Admin</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <label for="msg" class="control-label col-md-3">Message </label>
+                <div class="col-md-8">
+                    <textarea cols="50" class="form-control" id="msg" name="msg" rows="5"></textarea>
+                    @Html.ValidationMessageFor(model => model.msg, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10" style="margin: 0;">
+                    <input type="submit" value="Envoyer" class="btn btn-default buttonAjouter" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Retour", "Proprietaire")
+    </div>
+
+
+</div>
+

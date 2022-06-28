@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="Annonces">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Annonce)">
+        <MappingFragment StoreEntitySet="Annonces">
+          <ScalarProperty Name="Id_annonce" ColumnName="Id_annonce" />
+          <ScalarProperty Name="id_proprietaire" ColumnName="id_proprietaire" />
+          <ScalarProperty Name="id_categorie" ColumnName="id_categorie" />
+          <ScalarProperty Name="titre" ColumnName="titre" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="prix" ColumnName="prix" />
+          <ScalarProperty Name="courteDescription" ColumnName="courteDescription" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="isSpecial" ColumnName="isSpecial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Categorie)">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="Id_categorie" ColumnName="Id_categorie" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proprietaires">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Proprietaire)">
+        <MappingFragment StoreEntitySet="Proprietaires">
+          <ScalarProperty Name="Id_proprietaire" ColumnName="Id_proprietaire" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="ville" ColumnName="ville" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="isSpecial" ColumnName="isSpecial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Admin)">
+        <MappingFragment StoreEntitySet="Admins">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Liste_Favorie">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Liste_Favorie)">
+        <MappingFragment StoreEntitySet="Liste_Favorie">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="id_proprietaire" ColumnName="id_proprietaire" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Liste_noire">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Liste_noire)">
+        <MappingFragment StoreEntitySet="Liste_noire">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="id_proprietaire" ColumnName="id_proprietaire" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Message)">
+        <MappingFragment StoreEntitySet="Messages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="id_proprietaire" ColumnName="id_proprietaire" />
+          <ScalarProperty Name="msg" ColumnName="msg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,53 @@
+﻿@using ASP_Projet.Models;
+@{
+    IEnumerable<Categorie> categories = ViewData["Categories"] as IEnumerable<Categorie>;
+    IEnumerable<Annonce> annonces = ViewData["Annonces"] as IEnumerable<Annonce>;
+
+}
+<div class="home">
+    <div class="categories">
+        <h2>Categories</h2>
+        <ul>
+            @foreach (var categorie in categories)
+            {
+                <li>@Html.ActionLink(categorie.nom, "Categorie", new { id = categorie.Id_categorie })</li>
+            }
+        </ul>
+    </div>
+    <div class="annonces">
+        <div class="header">
+            <h2>@ViewData["nomCategorie"]</h2>
+            @using (Html.BeginForm("Categorie", "Home", FormMethod.Get))
+            {
+                @Html.TextBox("searching", "", new { style = "border-radius: 10px;padding: 3px; " }) <input type="submit" value="Chercher" class="searchButton" />
+            }
+        </div>
+        
+        @foreach (var annonce in annonces)
+        {
+            <div class="col-md-2 col-lg-3">
+                <div class="product-card">
+
+                    <div class="product-tumb">
+                        <img src="@Url.Content(annonce.image)" alt="">
+                    </div>
+                    <div class="product-details">
+                        <span class="product-catagory">@annonce.Categorie.nom</span>
+                        <h4><a href="">@Html.ActionLink(annonce.titre, "Annonce", new { id = annonce.Id_annonce })</a></h4>
+                        <p>@annonce.courteDescription</p>
+                        <div class="product-bottom-details">
+
+                            <div class="product-price">@annonce.prix DH</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+
+
+    </div>
+
+</div>
+
+

@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="Annonces" EntityType="Model1.Store.Annonces" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Categories" EntityType="Model1.Store.Categories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Proprietaires" EntityType="Model1.Store.Proprietaires" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Admins" EntityType="Model1.Store.Admins" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Liste_Favorie" EntityType="Model1.Store.Liste_Favorie" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Liste_noire" EntityType="Model1.Store.Liste_noire" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Messages" EntityType="Model1.Store.Messages" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK__Annonce__id_cate__4E88ABD4" Association="Model1.Store.FK__Annonce__id_cate__4E88ABD4">
+      <End Role="Categorie" EntitySet="Categories" />
+      <End Role="Annonce" EntitySet="Annonces" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Annonce__id_prop__4D94879B" Association="Model1.Store.FK__Annonce__id_prop__4D94879B">
+      <End Role="Proprietaire" EntitySet="Proprietaires" />
+      <End Role="Annonce" EntitySet="Annonces" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Liste_Fav__id_pr__71D1E811" Association="Model1.Store.FK__Liste_Fav__id_pr__71D1E811">
+      <End Role="Proprietaire" EntitySet="Proprietaires" />
+      <End Role="Liste_Favorie" EntitySet="Liste_Favorie" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Liste_noi__id_pr__74AE54BC" Association="Model1.Store.FK__Liste_noi__id_pr__74AE54BC">
+      <End Role="Proprietaire" EntitySet="Proprietaires" />
+      <End Role="Liste_noire" EntitySet="Liste_noire" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Message__id_prop__02FC7413" Association="Model1.Store.FK__Message__id_prop__02FC7413">
+      <End Role="Proprietaire" EntitySet="Proprietaires" />
+      <End Role="Message" EntitySet="Messages" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Annonces">
+    <Key>
+      <PropertyRef Name="Id_annonce" />
+    </Key>
+    <Property Name="Id_annonce" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_proprietaire" Type="int" Nullable="true" />
+    <Property Name="id_categorie" Type="int" Nullable="true" />
+    <Property Name="titre" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="image" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="prix" Type="float" Nullable="true" />
+    <Property Name="courteDescription" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="description" Type="nvarchar" Nullable="true" MaxLength="500" />
+    <Property Name="date" Type="datetime" Nullable="true" />
+    <Property Name="isSpecial" Type="bit" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="Id_categorie" />
+    </Key>
+    <Property Name="Id_categorie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom" Type="nvarchar" Nullable="true" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Proprietaires">
+    <Key>
+      <PropertyRef Name="Id_proprietaire" />
+    </Key>
+    <Property Name="Id_proprietaire" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="telephone" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="ville" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="email" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="password" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="isSpecial" Type="bit" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Admins">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="password" Type="nvarchar" Nullable="true" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Liste_Favorie">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_proprietaire" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Liste_noire">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_proprietaire" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Messages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_proprietaire" Type="int" Nullable="true" />
+    <Property Name="msg" Type="nvarchar" Nullable="true" MaxLength="200" />
+  </EntityType>
+  <Association Name="FK__Annonce__id_cate__4E88ABD4">
+    <End Role="Categorie" Type="Model1.Store.Categories" Multiplicity="0..1" />
+    <End Role="Annonce" Type="Model1.Store.Annonces" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorie">
+        <PropertyRef Name="Id_categorie" />
+      </Principal>
+      <Dependent Role="Annonce">
+        <PropertyRef Name="id_categorie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Annonce__id_prop__4D94879B">
+    <End Role="Proprietaire" Type="Model1.Store.Proprietaires" Multiplicity="0..1" />
+    <End Role="Annonce" Type="Model1.Store.Annonces" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proprietaire">
+        <PropertyRef Name="Id_proprietaire" />
+      </Principal>
+      <Dependent Role="Annonce">
+        <PropertyRef Name="id_proprietaire" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Liste_Fav__id_pr__71D1E811">
+    <End Role="Proprietaire" Type="Model1.Store.Proprietaires" Multiplicity="0..1" />
+    <End Role="Liste_Favorie" Type="Model1.Store.Liste_Favorie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proprietaire">
+        <PropertyRef Name="Id_proprietaire" />
+      </Principal>
+      <Dependent Role="Liste_Favorie">
+        <PropertyRef Name="id_proprietaire" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Liste_noi__id_pr__74AE54BC">
+    <End Role="Proprietaire" Type="Model1.Store.Proprietaires" Multiplicity="0..1" />
+    <End Role="Liste_noire" Type="Model1.Store.Liste_noire" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proprietaire">
+        <PropertyRef Name="Id_proprietaire" />
+      </Principal>
+      <Dependent Role="Liste_noire">
+        <PropertyRef Name="id_proprietaire" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Message__id_prop__02FC7413">
+    <End Role="Proprietaire" Type="Model1.Store.Proprietaires" Multiplicity="0..1" />
+    <End Role="Message" Type="Model1.Store.Messages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proprietaire">
+        <PropertyRef Name="Id_proprietaire" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="id_proprietaire" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

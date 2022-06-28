@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f7f6d45f6604431eadc7d64cbcc6b666" Name="Diagram1" ZoomLevel="38" >
+        <EntityTypeShape EntityType="Model1.Annonce" Width="1.5" PointX="3" PointY="3" />
+        <EntityTypeShape EntityType="Model1.Categorie" Width="1.5" PointX="0.75" PointY="1.875" />
+        <EntityTypeShape EntityType="Model1.Proprietaire" Width="1.5" PointX="0.75" PointY="5.125" />
+        <EntityTypeShape EntityType="Model1.Admin" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model1.Liste_Favorie" Width="1.5" PointX="3" PointY="7.5" />
+        <EntityTypeShape EntityType="Model1.Liste_noire" Width="1.5" PointX="3" PointY="9.875" />
+        <EntityTypeShape EntityType="Model1.Message" Width="1.5" PointX="3" PointY="12.125" />
+        <AssociationConnector Association="Model1.FK__Annonce__id_cate__4E88ABD4" />
+        <AssociationConnector Association="Model1.FK__Annonce__id_prop__4D94879B" />
+        <AssociationConnector Association="Model1.FK__Liste_Fav__id_pr__71D1E811" />
+        <AssociationConnector Association="Model1.FK__Liste_noi__id_pr__74AE54BC" />
+        <AssociationConnector Association="Model1.FK__Message__id_prop__02FC7413" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,100 @@
+﻿@model IEnumerable<ASP_Projet.Models.Annonce>
+
+@{
+    ViewBag.Title = "Index";
+    
+}
+
+<div style=" margin-left: auto; width: 90%; margin-right: auto;">
+    <div class="header" style=" display: flex; justify-content: space-between; align-items: center; ">
+        <h2 style="font-weight: bold; color: rgba(144,12,63,1)">Votre Annonces</h2>
+        @using (Html.BeginForm("Index", "Proprietaire", FormMethod.Get))
+        {
+            @Html.TextBox("searching", "", new { style = "border-radius: 10px;padding: 3px; " }) <input type="submit" value="Chercher" class="searchButton" />
+        }
+    </div>
+
+    <p>
+        <a href="@Url.Action("Create","Proprietaire")" class="btn-create"><span class="glyphicon glyphicon-plus"></span> Ajouter une nouvelle annonce</a>
+    </p>
+    <table class="table myTable">
+        <tr class="table-header">
+            <th>
+                @Html.DisplayNameFor(model => model.titre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.prix)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.courteDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isSpecial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categorie.nom)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.titre)
+        </td>
+        <td>
+            <img src="@Url.Content(item.image)" width="50" height="50" />
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prix)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.courteDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date)
+        </td>
+        @if (item.isSpecial == true)
+        {
+            <td>
+                Oui
+            </td>
+
+        }
+        else
+        {
+            <td>
+                Non
+            </td>
+        }
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Categorie.nom)
+        </td>
+
+        <td style="width:8%; padding:0">
+            <a href="@Url.Action("Edit","Proprietaire",new { id = item.Id_annonce })" class="btn-edit"><span class="glyphicon glyphicon-edit"></span> Modifier</a>
+            <a href="@Url.Action("DeleteConfirmed","Proprietaire",new { id = item.Id_annonce })" class="btn-delete"><span class="glyphicon glyphicon-trash"></span> Supprimer</a>
+
+        </td>
+    </tr>
+        }
+
+    </table>
+
+
+</div>

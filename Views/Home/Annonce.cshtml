@@ -1,0 +1,49 @@
+﻿@using ASP_Projet.Models;
+@{
+    Annonce annonce = ViewData["Annonce"] as Annonce;
+    
+
+
+}
+
+<div class="container annoncePage">
+    <div class="annonce">
+        <div class="image">
+            <img src="@Url.Content(annonce.image)" alt=""/>
+        </div>
+        <div class="details">
+            <div class="prix">@annonce.prix DH</div>
+            <div class="titre">@annonce.titre</div>
+            <div class="courteDesc">@annonce.courteDescription</div>
+            <div class="ville-date">
+                <span class="glyphicon glyphicon-map-marker"></span> @annonce.Proprietaire.ville <span class="glyphicon glyphicon-time"></span> @annonce.date.Value.ToString("dd/MM/yyyy")
+
+            </div>
+            <div class="categorie">
+                Type : <span>@annonce.Categorie.nom</span>
+            </div>
+
+
+        </div>
+        <div class="description">
+            <h3>Description</h3>
+            
+            @annonce.description
+
+        </div>
+
+    </div>
+    <div class="proprietaire">
+        <div class="header">Propriétaire</div>
+        <div class="infos">
+            <div>Nom : <span>@annonce.Proprietaire.nom</span></div>
+            <div>Ville : <span>@annonce.Proprietaire.ville</span></div>
+            <div>Email : <span>@annonce.Proprietaire.email</span></div>
+            <div>Téléphone : <span>@annonce.Proprietaire.telephone</span></div>
+
+        </div>
+
+    </div>
+
+</div>
+

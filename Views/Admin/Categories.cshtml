@@ -1,0 +1,44 @@
+﻿@model IEnumerable<ASP_Projet.Models.Categorie>
+
+@{
+    ViewBag.Title = "Categories";
+}
+<div style=" margin-left: auto; width: 50%; margin-right: auto;">
+    <div class="header" style=" display: flex; justify-content: space-between; align-items: center; ">
+        <h2 style="font-weight: bold; color: rgba(144,12,63,1)">Catégories</h2>
+        @using (Html.BeginForm("Categories", "Admin", FormMethod.Get))
+        {
+            @Html.TextBox("searching", "", new { style = "border-radius: 10px;padding: 3px; " }) <input type="submit" value="Chercher" class="searchButton" />
+        }
+    </div>
+    <p>
+        <a href="@Url.Action("CreateCategorie","Admin")" class="btn-create"><span class="glyphicon glyphicon-plus"></span> Ajouter une nouvelle catégorie</a>
+    </p>
+    
+    <table class="table myTable">
+        <tr class="table-header">
+            <th>
+                @Html.DisplayNameFor(model => model.nom)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nom)
+                </td>
+                <td style="width:40%">
+                    <a href="@Url.Action("EditCategorie", "Admin", new { id = item.Id_categorie })" class="btn-edit" style="display: inline;"><span class="glyphicon glyphicon-edit"></span> Modifier</a>
+                    <a href="@Url.Action("DeleteCategorie", "Admin", new { id = item.Id_categorie })" class="btn-edit" style="display: inline; background-color: darkred"><span class="glyphicon glyphicon-remove"></span> Supprimer</a>
+
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+</div>
+
